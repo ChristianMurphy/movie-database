@@ -1,0 +1,3 @@
+/*finds the names of all movies that are rated G or unrated*/
+SELECT movie.title from movie
+WHERE (movie.rating = 1 or movie.rating = 6)

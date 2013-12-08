@@ -1,0 +1,5 @@
+/*finds all of the reviews of movies*/
+SELECT person.first_name, person.last_name, movie.title, critiques.stars, critiques.content
+FROM movie, person, critiques
+WHERE movie.id = critiques.movie_id
+AND person.id = critiques.person_id
