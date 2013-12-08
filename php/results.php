@@ -1,7 +1,18 @@
+<?php
+// Create connection
+$connection=mysqli_connect("localhost","user","password","movies");
+
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+?> 
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Movie Database Search</title>
+    <title>Movie Database Results</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
@@ -59,3 +70,7 @@
    
   </body>
 </html>
+
+<?php
+mysqli_close($connection);
+?>
