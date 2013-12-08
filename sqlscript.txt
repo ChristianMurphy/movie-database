@@ -50,7 +50,7 @@ CREATE TABLE critiques
     content VARCHAR(140)
   );
 
-/*schema for critiques*/
+/*schema for directs*/
 CREATE TABLE directs
   (
     PRIMARY KEY(person_id, movie_id),
@@ -68,8 +68,9 @@ VALUES
 ('Jennifer', 'Lawrence', '1990-08-15', null),
 ('Audrey', 'Hepburn', '1929-5-4', '1993-01-20'),
 ('Robert', 'Downey', '1965-4-4', null),
+('RL', 'Shibe', '2001-12-21', null),
 ('Blake', 'Edwards', '1992-07-26', '2010-12-15'),
-('David', 'Russell', '1958-08-20', null);;
+('David', 'Russell', '1958-08-20', null);
 
 
 /*sample dataset for movie*/

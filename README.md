@@ -7,4 +7,10 @@ a SQL database for storing movie information
 ```sudo apt-get install mysql-server```
 
 ###Load Database
-```mysql movies < sqlscript.txt```
+```mysql --user=username --password=password```
+
+```create database movies;```
+
+```exit```
+
+```mysql --user=username --password=password movies < sqlscript.txt```
