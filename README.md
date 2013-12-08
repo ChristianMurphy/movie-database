@@ -13,4 +13,4 @@ a SQL database for storing movie information
 
 <code>exit</code>
 
-```mysql --user=username --password=password movies < sqlscript.txt```
+```sh database_script.sh```
