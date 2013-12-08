@@ -1,0 +1,6 @@
+/*find all the names of all movies jennifer lawrence has acted in*/
+SELECT movie.title from movie, person, acts
+WHERE person.first_name = 'Jennifer'
+AND person.last_name = 'Lawrence'
+AND person.id = acts.person_id
+AND acts.movie_id = movie.id

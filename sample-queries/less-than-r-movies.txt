@@ -1,0 +1,5 @@
+/*finds the names of all people who have acted in movies rated less R is lower*/
+SELECT person.first_name, person.last_name from movie, person, acts
+WHERE movie.rating < 5
+AND movie.id = acts.movie_id
+AND acts.person_id = person.id
