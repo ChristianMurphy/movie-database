@@ -1,7 +1,12 @@
-#! /bin/bash 
+#! /bin/bash
 
+echo SQL username:
+read USER
 
-mysql --user=root --password=jed833 movies << END_SQL
+echo SQL password:
+read PASS
+
+mysql --user=$USER --password=$PASS movies << END_SQL
 
 /*Schemas*/
 /*schema for person*/
@@ -121,4 +126,4 @@ VALUES
 END_SQL
 
 end
-EOF
+
