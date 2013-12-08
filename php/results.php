@@ -1,14 +1,3 @@
-<?php
-// Create connection
-$connection=mysqli_connect("localhost","user","password","movies");
-
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-?> 
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -49,6 +38,18 @@ if (mysqli_connect_errno())
       </div><!-- /.navbar-collapse -->
     </nav>
 
+
+<?php
+// Create connection
+$con=mysqli_connect("localhost","root","root","movies");
+
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+?> 
+
     <main class="container">
       <h1>Movie Search</h1>
 
@@ -71,6 +72,4 @@ if (mysqli_connect_errno())
   </body>
 </html>
 
-<?php
-mysqli_close($connection);
-?>
+
