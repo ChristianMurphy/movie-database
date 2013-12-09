@@ -39,18 +39,14 @@
 
     <main class="container">
 
+    <?php
+      require "query-engine.php";
+      require "display-engine.php";
 
-
-<?php
-require "query-engine.php";
-require "display-engine.php";
-
-//creating the query
-$Query = query($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);
-display_query($Query, $_POST["return-type"]);
-?> 
-
-
+      //creating the query
+      $Query = query($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);
+      display_query($Query, $_POST["return-type"]);
+    ?> 
 
     </main>
    

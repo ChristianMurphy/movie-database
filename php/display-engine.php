@@ -15,14 +15,14 @@ function display_query($Query, $Result_Type) {
 		case "Person":
 			echo "<tr><th>First Name</th> <th>Last Name</th> <th>Birth Date</th> <th>Death Date</th></tr>";
 			while($row = mysqli_fetch_array($result)) {
-				echo "<tr><td>" . $row['first_name'] . "</td> <td>" . $row['last_name'] . "</td> <td>" . $row['birth_date'] . "</td> <td>" . $row['death_date'] . "</td></tr>";
+				display_row(array("first_name", "last_name", "birth_date", "death_date"), $row);
 			}
 			break;
 
 		case "Movie":
 			echo "<tr><th>title</th> <th>Release Date</th> <th>Rating</th> <th>Length</th> <th>Tagline</th> <th>Summary</th> <th>Budget</th></tr>";
 			while($row = mysqli_fetch_array($result)) {
-				echo "<tr><td>" . $row['title'] . "</td> <td>" . $row['release_date'] . "</td> <td>" . $row['rating'] . "</td> <td>" . $row['length'] . "</td> <td>" . $row['tagline'] . "</td> <td>" . $row['summary'] . "</td> <td>$" . $row['budget'] . " million" . "</td></tr>";
+				display_row(array("title", "release_date", "rating", "length", "tagline", "summary", "budget"), $row);
 			}
 			break;
 
@@ -32,6 +32,13 @@ function display_query($Query, $Result_Type) {
 	echo "</table>";
 
 	mysqli_close($con);
-	
+}
+
+function display_row($fields, $row) {
+	echo "<tr>";
+	foreach ($fields as $field) {
+		echo "<td>" . $row[$field] . "</td>";
+  	}
+  	echo "</tr>";
 }
 ?>
