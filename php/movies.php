@@ -32,7 +32,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="movies.php">Movies</a></li>
+          <li class="active"><a href="movies.php">Movies</a></li>
           <li><a href="actors.php">Actors</a></li>
           <li><a href="directors.php">Directors</a></li>
         </ul>
@@ -40,20 +40,19 @@
       </div><!-- /.navbar-collapse -->
     </nav>
 
+
+
     <main class="container">
 
     <?php
       require "query-engine.php";
       require "display-engine.php";
 
-      //creating the query
-      $Query = query($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);
-      display_query($Query, $_POST["return-type"]);
+      $Query = "SELECT " . return_attributes("Movie") . " FROM movie";
+      display_query($Query, "Movie");
     ?> 
 
     </main>
    
   </body>
 </html>
-
-

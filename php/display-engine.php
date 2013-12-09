@@ -20,7 +20,7 @@ function display_query($Query, $Result_Type) {
 			break;
 
 		case "Movie":
-			echo "<tr><th>title</th> <th>Release Date</th> <th>Rating</th> <th>Length</th> <th>Tagline</th> <th>Summary</th> <th>Budget</th></tr>";
+			echo "<tr><th>Title</th> <th>Release Date</th> <th>Rating</th> <th>Length</th> <th>Tagline</th> <th>Summary</th> <th>Budget</th></tr>";
 			while($row = mysqli_fetch_array($result)) {
 				display_row(array("title", "release_date", "rating", "length", "tagline", "summary", "budget"), $row);
 			}

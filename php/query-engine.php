@@ -20,7 +20,7 @@ function table_type ($table_name) {
 	return $Type;
 }
 
-function return_attributes ($return_type, $param_type) {
+function return_attributes ($return_type) {
 	$Attributes = "";
 	switch (table_type($return_type)) {
 		case 'Person':
@@ -117,7 +117,7 @@ function select($return_type, $param_type, $param_value) {
 }
 
 function query ($return_type, $param_type, $param_value) {
-	return "SELECT DISTINCT " . return_attributes($return_type, $param_type) . " FROM " . tables($return_type, $param_type) . " WHERE " . select($return_type, $param_type, $param_value);
+	return "SELECT DISTINCT " . return_attributes($return_type) . " FROM " . tables($return_type, $param_type) . " WHERE " . select($return_type, $param_type, $param_value);
 }
 
 ?>

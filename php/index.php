@@ -31,7 +31,12 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <p class="navbar-text navbar-right">Justin Dobson, Kris Dorer, Christian Murphy</li></p>
+        <ul class="nav navbar-nav">
+          <li><a href="movies.php">Movies</a></li>
+          <li><a href="actors.php">Actors</a></li>
+          <li><a href="directors.php">Directors</a></li>
+        </ul>
+        <p class="navbar-text navbar-right hidden-xs">Justin Dobson, Kris Dorer, Christian Murphy</li></p>
       </div><!-- /.navbar-collapse -->
     </nav>
 

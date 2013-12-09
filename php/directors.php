@@ -34,11 +34,13 @@
         <ul class="nav navbar-nav">
           <li><a href="movies.php">Movies</a></li>
           <li><a href="actors.php">Actors</a></li>
-          <li><a href="directors.php">Directors</a></li>
+          <li class="active"><a href="directors.php">Directors</a></li>
         </ul>
         <p class="navbar-text navbar-right hidden-xs">Justin Dobson, Kris Dorer, Christian Murphy</li></p>
       </div><!-- /.navbar-collapse -->
     </nav>
+
+
 
     <main class="container">
 
@@ -46,14 +48,11 @@
       require "query-engine.php";
       require "display-engine.php";
 
-      //creating the query
-      $Query = query($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);
-      display_query($Query, $_POST["return-type"]);
+      $Query = "SELECT " . return_attributes("Director") . " FROM person, directs WHERE directs.person_id = person.id";
+      display_query($Query, "Director");
     ?> 
 
     </main>
    
   </body>
 </html>
-
-
