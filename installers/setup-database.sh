@@ -70,6 +70,44 @@ CREATE TABLE directs
     movie_id INT
   );
 
+/*schema for award organization*/
+CREATE TABLE organization
+(
+    PRIMARY KEY (id),
+    id INT AUTO_INCREMENT,
+    name VARCHAR(30)
+);
+
+/*table for movie genre*/
+CREATE TABLE genre
+(
+    PRIMARY KEY (id),
+    id INT AUTO_INCREMENT,
+    name VARCHAR(30)
+);
+
+/*join table for awards given by awards organization*/
+CREATE TABLE awards
+(
+    PRIMARY KEY(organization_id, movie_id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id),
+    FOREIGN KEY (movie_id) REFERENCES movie(id),
+    organization_id INT,
+    movie_id INT,
+    award VARCHAR(30),
+    date DATE
+);
+
+/*join table for movies in a genre*/
+CREATE TABLE in_genre
+(
+    PRIMARY KEY(genre_id, movie_id),
+    FOREIGN KEY (genre_id) REFERENCES organization(id),
+    FOREIGN KEY (movie_id) REFERENCES movie(id),
+    genre_id INT,
+    movie_id INT,
+);
+
 /*Sample Datasets*/
 /*sample dataset for person*/
 INSERT INTO person
@@ -123,7 +161,36 @@ INSERT INTO directs
 VALUES
   (5,1),
   (6,1);
+
+  
+INSERT INTO organization
+ (name)
+VALUES
+  ('Golden Globe'),
+  ('Grammys'),
+  ('Sun Dance');
+
+INSERT INTO genre
+ (name)
+VALUES
+  ('Action'),
+  ('Comedy'),
+  ('Drama');
+
+INSERT INTO awards
+ (organization_id, movie_id, award, date)
+VALUES
+  (1,1,'Best Actress', '1960-12-1');
+
+INSERT INTO in_genre
+  (genre_id, movie_id)
+VALUES
+  (1,2),
+  (1,3),
+  (2,2),
+  (2,3),
+  (3,1);
+
 END_SQL
 
 end
-
