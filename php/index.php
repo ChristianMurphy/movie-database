@@ -53,6 +53,7 @@
           <select name="param-type" class="form-control" id="param-type">
             <option>Person</option>
             <option>Movie</option>
+            <option>Genre</option>
           </select>
         </div>
 
