@@ -68,6 +68,7 @@ function tables($return_type, $param_type) {
 function select($return_type, $param_type, $param_value) {
 	$Select = "";
 
+	//query by user value
 	switch ($param_type) {
 		case 'Person':
 		$Select .= "((person.first_name='" . $param_value . "') OR (person.last_name='" . $param_value . "'))";
@@ -86,6 +87,7 @@ function select($return_type, $param_type, $param_value) {
 		break;
 	}
 
+	//handles join tables
 	if (table_type($return_type) != $param_type) {
 		$Select .= " AND ";
 		switch ($return_type) {
@@ -112,6 +114,10 @@ function select($return_type, $param_type, $param_value) {
 	}
 
 	return $Select;
+}
+
+function query ($return_type, $param_type, $param_value) {
+	return "SELECT DISTINCT " . return_attributes($return_type, $param_type) . " FROM " . tables($return_type, $param_type) . " WHERE " . select($return_type, $param_type, $param_value);
 }
 
 ?>

@@ -26,7 +26,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Movie Database</a>
+        <a class="navbar-brand" href="index.php">Movie Database</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,58 +43,11 @@
 
 <?php
 require "query-engine.php";
-$con=mysqli_connect("localhost","root","root","movies");
+require "display-engine.php";
 
 //creating the query
-$Query = "SELECT DISTINCT " . return_attributes($_POST["return-type"], $_POST["param-type"]) . " FROM " . tables($_POST["return-type"], $_POST["param-type"]) . " WHERE " . select($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);;
-$Type = "";
-
-echo "<div class='panel panel-default'><div class='panel-body'>" . $Query . "</div></div>";
-
-$result = mysqli_query($con, $Query);
-
-echo "<table class='table'>";
-
-//Adding the Header
-echo "<tr><th>";
-  switch(table_type($_POST["return-type"]))
-  {
-    case "Person":
-      echo "First Name</th> <th>Last Name</th> <th>Birth Date</th> <th>Death Date";
-      break;
-
-    case "Movie":
-      echo "title</th> <th>Release Date</th> <th>Rating</th> <th>Length</th> <th>Tagline</th> <th>Summary</th> <th>Budget";
-      break;
-
-    default:
-      break;
-  }
-  echo "</th></tr>";
-
-
-//Adding all the data
-while($row = mysqli_fetch_array($result)) 
-{
-  echo "<tr><td>";
-  switch(table_type($_POST["return-type"]))
-  {
-    case "Person":
-      echo $row['first_name'] . "</td> <td>" . $row['last_name'] . "</td> <td>" . $row['birth_date'] . "</td> <td>" . $row['death_date'];
-      break;
-
-    case "Movie":
-      echo $row['title'] . "</td> <td>" . $row['release_date'] . "</td> <td>" . $row['rating'] . "</td> <td>" . $row['length'] . "</td> <td>" . $row['tagline'] . "</td> <td>" . $row['summary'] . "</td> <td>$" . $row['budget'] . " million";
-      break;
-
-    default:
-      break;
-  }
-  echo "</td></tr>";
-}
-echo "</table>";
-
-mysqli_close($con);
+$Query = query($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);
+display_query($Query, $_POST["return-type"]);
 ?> 
 
 
