@@ -49,7 +49,7 @@ $con=mysqli_connect("localhost","root","root","movies");
 $Query = "SELECT DISTINCT " . return_attributes($_POST["return-type"], $_POST["param-type"]) . " FROM " . tables($_POST["return-type"], $_POST["param-type"]) . " WHERE " . select($_POST["return-type"], $_POST["param-type"], $_POST["param-value"]);;
 $Type = "";
 
-echo $Query . "<br>";
+echo "<div class='panel panel-default'><div class='panel-body'>" . $Query . "</div></div>";
 
 $result = mysqli_query($con, $Query);
 
