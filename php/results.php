@@ -31,10 +31,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-        </ul>
+        <p class="navbar-text navbar-right">Justin Dobson, Kris Dorer, Christian Murphy</li></p>
       </div><!-- /.navbar-collapse -->
     </nav>
 
@@ -105,6 +102,7 @@ else {
       break;
   }
 
+  //runs the actual check against user inputted text
   switch ($_POST["param-type"]) {
     case 'Person':
       $Query .= "AND ((person.first_name='" . $_POST["param-value"] . "') OR (person.last_name='" . $_POST["param-value"] . "'))";
