@@ -28,7 +28,7 @@ function return_attributes ($return_type, $param_type) {
 			break;
 		
 		case 'Movie':
-			$Attributes = "title, release_date, rating, length, tagline, summary, budget FROM movie";
+			$Attributes = "title, release_date, rating, length, tagline, summary, budget";
 			break;
 
 		default:
@@ -43,25 +43,25 @@ function tables($return_type, $param_type) {
 	if (table_type($return_type) != $param_type) {
 		switch ($_POST["return-type"]) {
 			case "Actor":
-				$Tables .= "acts";
+				$Tables .= ", person, acts";
 				break;
 
 			case "Director":
-				$Tables .= "directs";
+				$Tables .= ", person, directs";
 				break;
     
 			case "Movie":
 				if ($_POST["param-type"] == "Genre") {
-					$Tables .= "in_genre";
+					$Tables .= ", movie, in_genre";
 				} else {
-					$Tables .= "directs, acts";
+					$Tables .= ", movie , directs, acts";
 				}
 				break;
 			default:
 				# code...
 				break;
 		}
-	} 
+	}
 	return $Tables;
 }
 
@@ -85,6 +85,32 @@ function select($return_type, $param_type, $param_value) {
 		# code...
 		break;
 	}
+
+	if (table_type($return_type) != $param_type) {
+		$Select .= " AND ";
+		switch ($return_type) {
+			case "Actor":
+			$Select .= "person.id = acts.person_id AND acts.movie_id = movie.id";
+			break;
+
+		case "Director":
+			$Select .= "person.id = directs.person_id AND directs.movie_id = movie.id";
+			break;
+    
+		case "Movie":
+			if ($param_type == "Genre"){
+				$Select .= "(movie.id = in_genre.movie_id AND genre.id = in_genre.genre_id) ";
+			} else {
+				$Select .= "((person.id = directs.person_id AND directs.movie_id = movie.id) OR (person.id = acts.person_id AND acts.movie_id = movie.id))";
+			}
+		break;
+
+		default:
+			# code...
+			break;
+		}
+	}
+
 	return $Select;
 }
 
