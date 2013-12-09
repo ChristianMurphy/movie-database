@@ -42,10 +42,10 @@
 
 
 <?php
-$con=mysqli_connect("localhost","root","root","movies");
+$con=mysqli_connect("localhost","root","jed833","movies");
 
 //creating the query
-$Query = "SELECT * ";
+$Query = "SELECT DISTINCT ";
 $Type = "";
 
 //finds out what type it is returning
@@ -53,13 +53,13 @@ switch ($_POST["return-type"]) {
   //person
   case "Actor":
   case "Director":
-    $Query .= "FROM person ";
+    $Query .= "first_name, last_name, birth_date, death_date FROM person ";
     $Type = "Person";
     break;
 
   //or movie
   case "Movie":
-   $Query .= "FROM movie ";
+   $Query .= "title, release_date, rating, length, tagline, summary, budget FROM movie ";
     $Type = "Movie";
     break;
   
