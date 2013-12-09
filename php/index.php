@@ -54,7 +54,6 @@
             <option>Person</option>
             <option>Movie</option>
           </select>
-          name
         </div>
 
         <div class="form-group">

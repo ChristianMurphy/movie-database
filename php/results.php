@@ -153,7 +153,7 @@ while($row = mysqli_fetch_array($result))
       break;
 
     case "Movie":
-      echo $row['title'] . "</td> <td>" . $row['release_date'] . "</td> <td>" . $row['rating'] . "</td> <td>" . $row['length'] . "</td> <td>" . $row['tagline'] . "</td> <td>" . $row['summary'] . "</td> <td>" . $row['budget'];
+      echo $row['title'] . "</td> <td>" . $row['release_date'] . "</td> <td>" . $row['rating'] . "</td> <td>" . $row['length'] . "</td> <td>" . $row['tagline'] . "</td> <td>" . $row['summary'] . "</td> <td>$" . $row['budget'] . " million";
       break;
 
     default:
