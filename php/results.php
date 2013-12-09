@@ -97,6 +97,10 @@ else {
       $Query .= "directs, acts  WHERE ((person.id = directs.person_id AND directs.movie_id = movie.id) OR (person.id = acts.person_id AND acts.movie_id = movie.id)) ";
       break;
 
+    case "Genre":
+      $Query .= "genre, in_genre WHERE (movie.id = in_genre.movie_id AND genre.id = in_genre.genre_id)";
+      break;
+
     default:
       # code...
       break;
@@ -110,6 +114,10 @@ else {
 
     case 'Movie':
       $Query .= "AND movie.title='" . $_POST["param-value"] . "'";
+      break;
+
+    case 'Genre':
+      $Query .= "AND genre.name='" . $_POST["param-value"] . "'";
       break;
     
     default:
