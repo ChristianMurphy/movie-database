@@ -42,6 +42,8 @@
 
     <main class="container">
 
+
+
 <?php
 $con=mysqli_connect("localhost","root","root","movies");
 
@@ -103,7 +105,6 @@ else {
       break;
   }
 
-  //
   switch ($_POST["param-type"]) {
     case 'Person':
       $Query .= "AND ((person.first_name='" . $_POST["param-value"] . "') OR (person.last_name='" . $_POST["param-value"] . "'))";
@@ -124,13 +125,35 @@ echo $Query . "<br>";
 $result = mysqli_query($con, $Query);
 
 
-while($row = mysqli_fetch_array($result)) {
-  echo $row['first_name'] . " " . $row['last_name'];
-  echo "<br>";
+while($row = mysqli_fetch_array($result)) 
+{
+  switch($Type)
+  {
+    case "Person":
+      echo $row['first_name'] . " " . $row['last_name'] . " " . $row['birth_date'] . " " . $row['death_date'];
+      echo "<br>";
+      break;
+
+
+    case "Movie":
+      echo $row['title'] . " " . $row['release_date'] . " " . $row['rating'] . " " . $row['length'];
+      echo "<br>";
+      echo $row['tagline'] . " " . $row['summary'] . " " . $row['budget'];
+      echo "<br>";
+      break;
+
+
+    default:
+      break;
+  }
+  
 }
 
 mysqli_close($con);
 ?> 
+
+
+
     </main>
    
   </body>
