@@ -124,30 +124,46 @@ echo $Query . "<br>";
 
 $result = mysqli_query($con, $Query);
 
+echo "<table class='table'>";
 
-while($row = mysqli_fetch_array($result)) 
-{
+//Adding the Header
+echo "<tr><th>";
   switch($Type)
   {
     case "Person":
-      echo $row['first_name'] . " " . $row['last_name'] . " " . $row['birth_date'] . " " . $row['death_date'];
-      echo "<br>";
+      echo "First Name</th> <th>Last Name</th> <th>Birth Date</th> <th>Death Date";
       break;
-
 
     case "Movie":
-      echo $row['title'] . " " . $row['release_date'] . " " . $row['rating'] . " " . $row['length'];
-      echo "<br>";
-      echo $row['tagline'] . " " . $row['summary'] . " " . $row['budget'];
-      echo "<br>";
+      echo "title</th> <th>Release Date</th> <th>Rating</th> <th>Length</th> <th>Tagline</th> <th>Summary</th> <th>Budget";
       break;
-
 
     default:
       break;
   }
-  
+  echo "</th></tr>";
+
+
+//Adding all the data
+while($row = mysqli_fetch_array($result)) 
+{
+  echo "<tr><td>";
+  switch($Type)
+  {
+    case "Person":
+      echo $row['first_name'] . "</td> <td>" . $row['last_name'] . "</td> <td>" . $row['birth_date'] . "</td> <td>" . $row['death_date'];
+      break;
+
+    case "Movie":
+      echo $row['title'] . "</td> <td>" . $row['release_date'] . "</td> <td>" . $row['rating'] . "</td> <td>" . $row['length'] . "</td> <td>" . $row['tagline'] . "</td> <td>" . $row['summary'] . "</td> <td>" . $row['budget'];
+      break;
+
+    default:
+      break;
+  }
+  echo "</td></tr>";
 }
+echo "</table>";
 
 mysqli_close($con);
 ?> 
