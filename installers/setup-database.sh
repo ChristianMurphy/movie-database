@@ -125,7 +125,7 @@ VALUES
 INSERT INTO movie
 (title, release_date, rating, length, tagline, summary, budget)
 VALUES
-('Breakfast at Tiffany\'s', '1961-11-4', 'NR', 115,
+("Breakfast at Tiffany\'s", '1961-11-4', 'NR', 115,
  'Audrey Hepburn plays that daring, darling Holly Golightly to a new high in entertainment delight!',
  'A young New York socialite becomes interested in a young man who has moved into her apartment building.',
  2.5),
