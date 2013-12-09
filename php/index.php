@@ -41,19 +41,30 @@
     <main class="container">
       <h1>Movie Search</h1>
 
-      <form role="form">
+      <form role="form" action="results.php" method="post">
         <div class="form-group">
-          <label for="query-type">Type</label>
-          <select class="form-control" id="query-type">
-            <option>Person</option>
+          <label for="return-type">Find a </label>
+          <select name="return-type" class="form-control" id="return-type">
+            <option>Actor</option>
+            <option>Director</option>
             <option>Movie</option>
           </select>
         </div>
+
         <div class="form-group">
-          <label for="attribute-value">Value</label>
-          <input type="password" class="form-control" id="attribute-value" placeholder="name">
+          <label for="param-type">where the</label>
+          <select name="param-type" class="form-control" id="param-type">
+            <option>Person</option>
+            <option>Movie</option>
+          </select>
+          name
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+
+        <div class="form-group">
+          <label for="param-value">is</label>
+          <input name="param-value" type="text" class="form-control" id="param-value" placeholder="name">
+        </div>
+        <input type="submit" class="btn btn-default">
       </form>
     </main>
    

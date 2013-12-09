@@ -39,34 +39,79 @@
     </nav>
 
 
-<?php
-// Create connection
-$con=mysqli_connect("localhost","root","root","movies");
-
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-?> 
 
     <main class="container">
-      <h1>Movie Search</h1>
 
-      <form role="form">
-        <div class="form-group">
-          <label for="query-type">Type</label>
-          <select class="form-control" id="query-type">
-            <option>Person</option>
-            <option>Movie</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="attribute-value">Value</label>
-          <input type="password" class="form-control" id="attribute-value" placeholder="name">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+<?php
+$con=mysqli_connect("localhost","root","root","movies");
+
+//creating the query
+$Query = "SELECT * ";
+$Type = "";
+
+//finds out what type it is returning
+switch ($_POST["return-type"]) {
+  //person
+  case "Actor":
+  case "Director":
+    $Query .= "FROM person ";
+    $Type = "Person";
+    break;
+
+  //or movie
+  case "Movie":
+   $Query .= "FROM movie ";
+    $Type = "Movie";
+    break;
+  
+  default:
+    # code...
+    break;
+}
+
+//if you are searching for a person based on a person
+//or a movie based on a movie name simple query
+if ($Type == $_POST["param-type"]) {
+  $Query .= " WHERE ";
+  if ($Type == "Person") {
+    $Query .= "person.first_name = '" . $_POST["param-value"] . "'";
+  } elseif ($Type == "Movie") {
+    $Query .= "movie.title = '" . $_POST["param-value"] . "'";
+  }
+}
+
+//seaching for a person from by movie name
+//or searching for a movie by an actor or a director name
+else {
+  $Query .= ", " . strtolower($_POST["param-type"]) . ", ";
+  switch ($_POST["return-type"]) {
+    case "Actor":
+      $Query .= "acts ";
+      break;
+
+    case "Director":
+      $Query .= "directs ";
+      break;
+    
+    default:
+      # code...
+      break;
+  }
+
+}
+
+echo $Query . "<br>";
+
+$result = mysqli_query($con, $Query);
+
+
+while($row = mysqli_fetch_array($result)) {
+  echo $row['first_name'] . " " . $row['last_name'];
+  echo "<br>";
+}
+
+mysqli_close($con);
+?> 
     </main>
    
   </body>
