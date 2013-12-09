@@ -42,7 +42,7 @@
 
 
 <?php
-$con=mysqli_connect("localhost","root","jed833","movies");
+$con=mysqli_connect("localhost","root","root","movies");
 
 //creating the query
 $Query = "SELECT DISTINCT ";
