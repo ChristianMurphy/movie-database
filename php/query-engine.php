@@ -10,8 +10,12 @@ function table_type ($table_name) {
 
 		case "Movie":
 			$Type = "Movie";
-			break;
-	  
+                        break;
+
+                case "Critiques":
+                        $Type = "Critiques";
+                        break;
+
 		default:
 			# code...
 			break;

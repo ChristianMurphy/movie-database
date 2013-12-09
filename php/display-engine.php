@@ -1,6 +1,6 @@
 <?php
 function display_query($Query, $Result_Type) {
-	$con=mysqli_connect("localhost","root","root","movies");
+	$con=mysqli_connect("localhost","root","jed833","movies");
 	
 	//display the query
 	echo "<div class='panel panel-default'><div class='panel-body'>" . $Query . "</div></div>";
@@ -24,7 +24,13 @@ function display_query($Query, $Result_Type) {
 			while($row = mysqli_fetch_array($result)) {
 				display_row(array("title", "release_date", "rating", "length", "tagline", "summary", "budget"), $row);
 			}
-			break;
+                        break;
+                case "Critiques":
+                        echo "<tr><th>Written By</th> <th></th> <th>For Movie</th> <th>Stars Given</th> <th>Critique</th></tr>";
+                        while( $row = mysqli_fetch_array( $result ) ) {
+                                display_row( array( "first_name", "last_name", "title", "stars", "content" ), $row );
+                        }
+                        break;
 
 		default:
 			break;
