@@ -105,7 +105,7 @@ CREATE TABLE in_genre
     FOREIGN KEY (genre_id) REFERENCES organization(id),
     FOREIGN KEY (movie_id) REFERENCES movie(id),
     genre_id INT,
-    movie_id INT,
+    movie_id INT
 );
 
 /*Sample Datasets*/
