@@ -84,20 +84,39 @@ if ($Type == $_POST["param-type"]) {
 //or searching for a movie by an actor or a director name
 else {
   $Query .= ", " . strtolower($_POST["param-type"]) . ", ";
+  //Associate all of the related stuffs
   switch ($_POST["return-type"]) {
     case "Actor":
-      $Query .= "acts ";
+      $Query .= "acts  WHERE person.id = acts.person_id AND acts.movie_id = movie.id ";
       break;
 
     case "Director":
-      $Query .= "directs ";
+      $Query .= "directs  WHERE person.id = directs.person_id AND directs.movie_id = movie.id ";
+      break;
+    
+    case "Movie":
+      $Query .= "directs, acts  WHERE (person.id = directs.person_id AND directs.movie_id = movie.id) OR (person.id = acts.person_id AND acts.movie_id = movie.id) ";
+      break;
+
+    default:
+      # code...
+      break;
+  }
+
+  //
+  switch ($_POST["param-type"]) {
+    case 'Person':
+      $Query .= "AND ((person.first_name='" . $_POST["param-value"] . "') OR (person.last_name='" . $_POST["param-value"] . "'))";
+      break;
+
+    case 'Movie':
+      $Query .= "AND movie.title='" . $_POST["param-value"] . "'";
       break;
     
     default:
       # code...
       break;
   }
-
 }
 
 echo $Query . "<br>";
