@@ -33,7 +33,10 @@ function return_attributes ($return_type) {
 		
 		case 'Movie':
 			$Attributes = "title, release_date, rating, length, tagline, summary, budget";
-			break;
+                        break;
+                case 'Critiques':
+                        $Attributes = "first_name, last_name, title, stars, content";
+                       break; 
 
 		default:
 			# code...
