@@ -1,0 +1,24 @@
+Contributions
+
+Building database foundation:
+Justin Dobson
+Christian Murphy
+
+Building front-end:
+Justin Dobson
+Kris Dorer
+Christian Murphy
+
+Building Dynamic queries:
+Justin Dobson
+Kris Dorer
+Christian Murphy
+
+Testing:
+Kris Dorer
+Justin Dobson
+Christian Murphy
+
+ER Model:
+Kris Dorer
+Christian Murphy
