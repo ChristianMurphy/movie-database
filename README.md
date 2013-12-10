@@ -2,6 +2,7 @@ Movie Database
 ==============
 
 a SQL database for storing movie information
+
 NOTE: This was made on Ubuntu, thus the instructions here will relate to deploying on Linux
 ###Installation Instructions
 ```sh lamp-install.sh```
